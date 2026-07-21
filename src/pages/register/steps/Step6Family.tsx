@@ -57,8 +57,8 @@ export default function Step6Family({ onNext }: StepProps) {
         <div className="w-16 h-16 rounded-2xl bg-pink-100 flex items-center justify-center mb-4">
           <span className="material-icons-round text-pink-500 text-3xl">family_restroom</span>
         </div>
-        <h2 className="text-xl font-bold text-gray-900">Family Mapping</h2>
-        <p className="text-sm text-gray-500 mt-1">Add your family members to the scheme</p>
+        <h2 className="text-xl font-bold text-gray-900">Beneficiary Mapping</h2>
+        <p className="text-sm text-gray-500 mt-1">Add beneficiaries linked to this household</p>
       </motion.div>
 
       {/* Family Tree Visualization */}
@@ -66,7 +66,7 @@ export default function Step6Family({ onNext }: StepProps) {
         <div className="absolute top-2 right-2 opacity-10">
           <span className="material-icons-round text-[#005BAC]" style={{ fontSize: 80 }}>account_tree</span>
         </div>
-        <p className="text-xs font-bold text-[#005BAC] uppercase tracking-wider mb-3">Family Structure</p>
+        <p className="text-xs font-bold text-[#005BAC] uppercase tracking-wider mb-3">Mapped Beneficiaries</p>
         <div className="flex items-start gap-2 flex-wrap">
           {members.map((m, i) => (
             <div key={m.id} className="flex flex-col items-center gap-1 relative">
@@ -143,11 +143,11 @@ export default function Step6Family({ onNext }: StepProps) {
 
       <Button fullWidth size="xl" onClick={onNext}
         icon={<span className="material-icons-round text-xl">arrow_forward</span>} iconPosition="right">
-        Continue ({members.length} members)
+        Continue ({members.length} beneficiaries)
       </Button>
 
       {/* Add member bottom sheet */}
-      <BottomSheet isOpen={showSheet} onClose={() => setShowSheet(false)} title="Add Family Member">
+      <BottomSheet isOpen={showSheet} onClose={() => setShowSheet(false)} title="Add Beneficiary">
         <div className="p-5 space-y-4">
           <Input label="Full Name" value={newMember.name}
             onChange={e => setNewMember(p => ({ ...p, name: e.target.value }))}

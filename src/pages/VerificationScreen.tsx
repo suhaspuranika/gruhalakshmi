@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import CameraPreview from '../components/CameraPreview';
 import VerificationAnimation from '../components/VerificationAnimation';
@@ -9,6 +9,9 @@ type VerificationState = 'intro' | 'camera' | 'result';
 
 export default function VerificationScreen() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const fromKyc = !!(location.state as { fromKyc?: boolean } | null)?.fromKyc;
+  const beneficiaryName = (location.state as { beneficiaryName?: string } | null)?.beneficiaryName;
   const [state, setState] = useState<VerificationState>('intro');
   const [success, setSuccess] = useState(false);
   const [matchScore] = useState(() => 95 + Math.random() * 4);
@@ -42,7 +45,11 @@ export default function VerificationScreen() {
             <span className="font-semibold">Verification Result</span>
           </button>
         </div>
-        <VerificationAnimation success={success} matchScore={parseFloat(matchScore.toFixed(1))} />
+        <VerificationAnimation
+          success={success}
+          matchScore={parseFloat(matchScore.toFixed(1))}
+          subtitle={fromKyc ? 'Next payment will be processed.' : undefined}
+        />
       </div>
     );
   }
@@ -58,7 +65,11 @@ export default function VerificationScreen() {
         </button>
         <div className="text-center relative z-10 mt-6">
           <h1 className="text-2xl font-black text-white">Face Verification</h1>
-          <p className="text-blue-200 text-sm mt-1">Monthly biometric verification</p>
+          <p className="text-blue-200 text-sm mt-1">
+            {beneficiaryName
+              ? `Verifying ${beneficiaryName}`
+              : 'Monthly biometric verification'}
+          </p>
         </div>
       </div>
 

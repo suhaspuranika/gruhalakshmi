@@ -18,10 +18,10 @@ export default function FamilyScreen() {
         <motion.div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10"
           animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 8, repeat: Infinity }} />
         <div className="relative z-10">
-          <h1 className="text-2xl font-black text-white mb-1">Family</h1>
-          <p className="text-blue-200 text-sm">{members.length} members registered</p>
+          <h1 className="text-2xl font-black text-white mb-1">Beneficiaries</h1>
+          <p className="text-blue-200 text-sm">{members.length} beneficiaries mapped</p>
 
-          {/* Family tree visualization */}
+          {/* Beneficiary structure */}
           <div className="mt-4 bg-white/15 backdrop-blur-sm rounded-2xl p-3">
             <div className="flex items-center gap-3 flex-wrap">
               {members.map((m, i) => (
@@ -92,7 +92,7 @@ export default function FamilyScreen() {
       <BottomSheet
         isOpen={!!selectedMember}
         onClose={() => setSelectedMember(null)}
-        title="Member Profile"
+        title="Beneficiary Profile"
         height="auto"
       >
         {selectedMember && (

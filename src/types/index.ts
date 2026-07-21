@@ -1,3 +1,34 @@
+export interface User {
+  id: string;
+  name: string;
+  mobile: string;
+  email: string;
+  photo: string;
+}
+
+export interface ManagedBeneficiary {
+  id: string;
+  name: string;
+  mobile: string;
+  relationship: string;
+  aadhaar: string;
+  gender: string;
+  dob: string;
+  address: string;
+  photo: string;
+  applicationStatus:
+    | 'submitted'
+    | 'kyc_pending'
+    | 'eligible_not_applied'
+    | 'approved'
+    | 'rejected'
+    | 'draft'
+    | 'active';
+  applicationId?: string;
+  beneficiaryId?: string;
+  faceRegistered: boolean;
+}
+
 export interface Beneficiary {
   id: string;
   name: string;
@@ -40,13 +71,25 @@ export interface FamilyMember {
 
 export interface Payment {
   id: string;
+  beneficiaryId: string;
+  beneficiaryName: string;
   month: string;
   year: number;
   amount: number;
-  status: 'released' | 'pending' | 'processing' | 'failed';
+  status: 'released' | 'pending' | 'processing' | 'failed' | 'pending_kyc';
   date: string;
   transactionId: string;
   utrNumber: string;
+}
+
+export interface Application {
+  id: string;
+  applicationNo: string;
+  beneficiaryId: string;
+  beneficiaryName: string;
+  status: 'pending' | 'approved' | 'rejected' | 'draft';
+  submittedAt: string;
+  type: 'fresh';
 }
 
 export interface Notification {
@@ -72,10 +115,20 @@ export interface Document {
 export interface AppState {
   language: 'en' | 'kn';
   isLoggedIn: boolean;
-  beneficiary: Beneficiary | null;
+  user: User | null;
+  beneficiaries: ManagedBeneficiary[];
   darkMode: boolean;
   registrationStep: number;
   verificationResult: 'success' | 'failed' | null;
+  selectedBeneficiaryId: string | null;
+}
+
+export interface AccountRegistrationData {
+  name: string;
+  mobile: string;
+  email: string;
+  password: string;
+  otp: string;
 }
 
 export interface RegistrationData {
@@ -97,4 +150,14 @@ export interface RegistrationData {
   branch: string;
   faceRegistered: boolean;
   declarationSigned: boolean;
+}
+
+export interface BeneficiaryFormData {
+  name: string;
+  mobile: string;
+  relationship: string;
+  aadhaar: string;
+  gender: string;
+  dob: string;
+  address: string;
 }

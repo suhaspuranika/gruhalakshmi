@@ -13,6 +13,7 @@ const statusMap: Record<string, 'released' | 'pending' | 'processing' | 'failed'
   pending: 'pending',
   processing: 'processing',
   failed: 'failed',
+  pending_kyc: 'pending',
 };
 
 export default function PaymentCard({ payment, index }: PaymentCardProps) {

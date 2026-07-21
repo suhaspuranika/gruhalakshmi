@@ -1,0 +1,47 @@
+[
+  {
+    "id": "a1",
+    "applicationNo": "GLK20260000125",
+    "beneficiaryId": "b1",
+    "beneficiaryName": "Lakshmi Devi",
+    "status": "pending",
+    "submittedAt": "18 Jul 2026",
+    "type": "fresh"
+  },
+  {
+    "id": "a2",
+    "applicationNo": "GLK20260000098",
+    "beneficiaryId": "b2",
+    "beneficiaryName": "Geetha",
+    "status": "pending",
+    "submittedAt": "10 Jul 2026",
+    "type": "fresh"
+  },
+  {
+    "id": "a3",
+    "applicationNo": "GLK20250000412",
+    "beneficiaryId": "b4",
+    "beneficiaryName": "Savitha",
+    "status": "approved",
+    "submittedAt": "05 Mar 2026",
+    "type": "fresh"
+  },
+  {
+    "id": "a4",
+    "applicationNo": "GLK20250000301",
+    "beneficiaryId": "b5",
+    "beneficiaryName": "Meena",
+    "status": "rejected",
+    "submittedAt": "20 Jan 2026",
+    "type": "fresh"
+  },
+  {
+    "id": "a5",
+    "applicationNo": "DRAFT-001",
+    "beneficiaryId": "b3",
+    "beneficiaryName": "Radha",
+    "status": "draft",
+    "submittedAt": "",
+    "type": "fresh"
+  }
+]

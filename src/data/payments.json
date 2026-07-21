@@ -1,16 +1,8 @@
 [
   {
     "id": "1",
-    "month": "July",
-    "year": 2026,
-    "amount": 2000,
-    "status": "released",
-    "date": "15 Jul 2026",
-    "transactionId": "TXN2026071500123",
-    "utrNumber": "UTR2026071500456"
-  },
-  {
-    "id": "2",
+    "beneficiaryId": "b1",
+    "beneficiaryName": "Lakshmi Devi",
     "month": "June",
     "year": 2026,
     "amount": 2000,
@@ -20,33 +12,39 @@
     "utrNumber": "UTR2026061500012"
   },
   {
-    "id": "3",
+    "id": "2",
+    "beneficiaryId": "b1",
+    "beneficiaryName": "Lakshmi Devi",
     "month": "May",
     "year": 2026,
     "amount": 2000,
-    "status": "pending",
-    "date": "Pending Verification",
+    "status": "released",
+    "date": "15 May 2026",
+    "transactionId": "TXN2026051500123",
+    "utrNumber": "UTR2026051500456"
+  },
+  {
+    "id": "3",
+    "beneficiaryId": "b1",
+    "beneficiaryName": "Lakshmi Devi",
+    "month": "April",
+    "year": 2026,
+    "amount": 2000,
+    "status": "pending_kyc",
+    "date": "Pending KYC",
     "transactionId": "",
     "utrNumber": ""
   },
   {
     "id": "4",
-    "month": "April",
+    "beneficiaryId": "b2",
+    "beneficiaryName": "Geetha",
+    "month": "June",
     "year": 2026,
     "amount": 2000,
-    "status": "released",
-    "date": "15 Apr 2026",
-    "transactionId": "TXN2026041500345",
-    "utrNumber": "UTR2026041500678"
-  },
-  {
-    "id": "5",
-    "month": "March",
-    "year": 2026,
-    "amount": 2000,
-    "status": "released",
-    "date": "15 Mar 2026",
-    "transactionId": "TXN2026031500901",
-    "utrNumber": "UTR2026031500234"
+    "status": "pending_kyc",
+    "date": "Pending KYC",
+    "transactionId": "",
+    "utrNumber": ""
   }
 ]

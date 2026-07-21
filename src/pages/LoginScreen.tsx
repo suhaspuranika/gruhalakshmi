@@ -71,7 +71,7 @@ export default function LoginScreen() {
             </div>
           </div>
           <h2 className="text-2xl font-bold text-white">Welcome Back</h2>
-          <p className="text-white/70 text-sm mt-1">Login to access your benefits</p>
+          <p className="text-white/70 text-sm mt-1">Login to manage beneficiaries</p>
         </motion.div>
       </div>
 

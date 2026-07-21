@@ -1,94 +1,95 @@
+import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import PageHeader from '../components/layout/PageHeader';
-import PaymentCard from '../components/ui/PaymentCard';
 import paymentsData from '../data/payments.json';
 import type { Payment } from '../types';
 import { formatCurrency } from '../lib/utils';
 
+const statusLabel: Record<Payment['status'], { text: string; color: string }> = {
+  released: { text: 'Success', color: 'text-green-600 bg-green-50' },
+  pending: { text: 'Pending', color: 'text-yellow-600 bg-yellow-50' },
+  processing: { text: 'Processing', color: 'text-blue-600 bg-blue-50' },
+  failed: { text: 'Failed', color: 'text-red-600 bg-red-50' },
+  pending_kyc: { text: 'Pending KYC', color: 'text-orange-600 bg-orange-50' },
+};
+
 export default function PaymentsScreen() {
   const payments = paymentsData as Payment[];
-  const totalReleased = payments.filter(p => p.status === 'released').reduce((sum, p) => sum + p.amount, 0);
-  const pending = payments.filter(p => p.status === 'pending').length;
+  const groups = useMemo(() => {
+    const map = new Map<string, { name: string; items: Payment[] }>();
+    payments.forEach(p => {
+      const existing = map.get(p.beneficiaryId);
+      if (existing) {
+        existing.items.push(p);
+      } else {
+        map.set(p.beneficiaryId, { name: p.beneficiaryName, items: [p] });
+      }
+    });
+    return Array.from(map.entries());
+  }, [payments]);
+
+  const [expanded, setExpanded] = useState<string | null>(groups[0]?.[0] ?? null);
 
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
-      {/* Header */}
-      <div className="gradient-primary px-5 pt-12 pb-16 relative overflow-hidden">
-        <motion.div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10"
-          animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 8, repeat: Infinity }} />
+      <div className="gradient-primary px-5 pt-12 pb-14 relative overflow-hidden">
+        <motion.div
+          className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10"
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
         <div className="relative z-10">
-          <div className="flex items-center gap-3 mb-5">
-            <div>
-              <h1 className="text-2xl font-black text-white">Payments</h1>
-              <p className="text-blue-200 text-sm">Gruhalakshmi Monthly Benefits</p>
-            </div>
-          </div>
-          {/* Summary */}
-          <div className="grid grid-cols-2 gap-3">
-            <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-3">
-              <p className="text-blue-200 text-xs mb-1">Total Received</p>
-              <p className="text-white font-black text-xl">{formatCurrency(totalReleased)}</p>
-              <p className="text-blue-200 text-xs mt-0.5">{payments.filter(p => p.status === 'released').length} payments</p>
-            </div>
-            <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-3">
-              <p className="text-blue-200 text-xs mb-1">Monthly Amount</p>
-              <p className="text-white font-black text-xl">₹2,000</p>
-              <p className={`text-xs mt-0.5 ${pending > 0 ? 'text-yellow-300' : 'text-green-300'}`}>
-                {pending > 0 ? `${pending} pending` : 'All up to date'}
-              </p>
-            </div>
-          </div>
+          <h1 className="text-2xl font-black text-white mb-1">Payment Status</h1>
+          <p className="text-blue-200 text-sm">Monthly benefits by beneficiary</p>
         </div>
       </div>
 
-      <div className="px-4 -mt-8">
-        {/* Timeline list */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-3xl p-4 card-shadow-lg mb-4 relative overflow-hidden"
-        >
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="font-bold text-gray-900">Payment History</h3>
-            <span className="text-xs text-[#005BAC] font-semibold bg-blue-50 px-2 py-1 rounded-full">
-              2026
-            </span>
-          </div>
-
-          {/* Timeline connector */}
-          <div className="relative">
-            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-100 z-0" />
-            <div className="space-y-3">
-              {payments.map((payment, i) => (
-                <div key={payment.id} className="relative pl-0">
-                  <PaymentCard payment={payment} index={i} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Annual summary */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="bg-white rounded-2xl p-4 card-shadow mb-4"
-        >
-          <h3 className="font-bold text-gray-800 text-sm mb-3">Annual Summary 2026</h3>
-          <div className="grid grid-cols-3 gap-3 text-center">
-            {[
-              { label: 'Released', value: payments.filter(p => p.status === 'released').length, color: 'text-green-600', bg: 'bg-green-50' },
-              { label: 'Pending', value: payments.filter(p => p.status === 'pending').length, color: 'text-yellow-600', bg: 'bg-yellow-50' },
-              { label: 'Total Months', value: payments.length, color: 'text-blue-600', bg: 'bg-blue-50' },
-            ].map(item => (
-              <div key={item.label} className={`${item.bg} rounded-xl p-3`}>
-                <p className={`text-2xl font-black ${item.color}`}>{item.value}</p>
-                <p className="text-xs text-gray-500 mt-0.5">{item.label}</p>
+      <div className="px-4 -mt-6 pb-6 space-y-4">
+        {groups.map(([beneficiaryId, group], gi) => (
+          <motion.div
+            key={beneficiaryId}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: gi * 0.08 }}
+            className="bg-white rounded-3xl card-shadow-lg overflow-hidden"
+          >
+            <button
+              className="w-full flex items-center justify-between p-4 text-left"
+              onClick={() => setExpanded(expanded === beneficiaryId ? null : beneficiaryId)}
+            >
+              <div>
+                <p className="font-bold text-gray-900">{group.name}</p>
+                <p className="text-xs text-gray-400">{group.items.length} payment records</p>
               </div>
-            ))}
-          </div>
-        </motion.div>
+              <span className="material-icons-round text-gray-400">
+                {expanded === beneficiaryId ? 'expand_less' : 'expand_more'}
+              </span>
+            </button>
+
+            {expanded === beneficiaryId && (
+              <div className="px-4 pb-4 space-y-3 border-t border-gray-50 pt-3">
+                {group.items.map(payment => {
+                  const status = statusLabel[payment.status];
+                  return (
+                    <div
+                      key={payment.id}
+                      className="flex items-center justify-between py-3 border-b border-gray-50 last:border-0"
+                    >
+                      <div>
+                        <p className="font-semibold text-gray-800">{payment.month}</p>
+                        <p className="text-lg font-black text-gray-900">
+                          {formatCurrency(payment.amount)}
+                        </p>
+                      </div>
+                      <span className={`text-xs font-semibold px-2.5 py-1 rounded-lg ${status.color}`}>
+                        {status.text}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </motion.div>
+        ))}
       </div>
     </div>
   );

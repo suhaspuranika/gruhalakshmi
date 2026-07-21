@@ -5,11 +5,13 @@ import Button from './ui/Button';
 interface VerificationAnimationProps {
   success: boolean;
   matchScore?: number;
+  subtitle?: string;
 }
 
 export default function VerificationAnimation({
   success,
   matchScore = 98.7,
+  subtitle,
 }: VerificationAnimationProps) {
   const navigate = useNavigate();
 
@@ -79,8 +81,12 @@ export default function VerificationAnimation({
           transition={{ delay: 0.6 }}
           className="text-center mb-8"
         >
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Identity Verified</h2>
-          <p className="text-gray-500 mb-6">Your face has been successfully matched</p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            {subtitle ? 'Verification Successful' : 'Identity Verified'}
+          </h2>
+          <p className="text-gray-500 mb-6">
+            {subtitle || 'Your face has been successfully matched'}
+          </p>
 
           {/* Match score */}
           <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-5 mb-4">

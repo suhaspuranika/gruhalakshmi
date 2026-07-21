@@ -1,0 +1,45 @@
+[
+  {
+    "id": "b1",
+    "name": "Lakshmi Devi",
+    "mobile": "9876501234",
+    "relationship": "Mother",
+    "aadhaar": "XXXX XXXX 9012",
+    "gender": "Female",
+    "dob": "15-08-1985",
+    "address": "No. 42, Rajiv Nagar, Jayanagar, Bangalore",
+    "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Lakshmi&backgroundColor=b6e3f4",
+    "applicationStatus": "submitted",
+    "applicationId": "GLK20260000125",
+    "beneficiaryId": "GL-BEN-2026-004521",
+    "faceRegistered": true
+  },
+  {
+    "id": "b2",
+    "name": "Geetha",
+    "mobile": "9876505678",
+    "relationship": "Aunt",
+    "aadhaar": "XXXX XXXX 3456",
+    "gender": "Female",
+    "dob": "22-03-1978",
+    "address": "Ward 8, Mysore Road, Bangalore",
+    "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Geetha&backgroundColor=ffd5dc",
+    "applicationStatus": "kyc_pending",
+    "applicationId": "GLK20260000098",
+    "beneficiaryId": "GL-BEN-2026-003102",
+    "faceRegistered": false
+  },
+  {
+    "id": "b3",
+    "name": "Radha",
+    "mobile": "9876509012",
+    "relationship": "Wife",
+    "aadhaar": "XXXX XXXX 7890",
+    "gender": "Female",
+    "dob": "10-11-1990",
+    "address": "No. 15, 4th Cross, Malleshwaram",
+    "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Radha&backgroundColor=c0aede",
+    "applicationStatus": "eligible_not_applied",
+    "faceRegistered": false
+  }
+]
