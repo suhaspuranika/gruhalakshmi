@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "name": "Lakshmi Devi",
+    "relationship": "Head of Family",
+    "age": 41,
+    "aadhaar": "XXXX XXXX 9012",
+    "eligibility": "eligible",
+    "status": "verified",
+    "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Lakshmi&backgroundColor=b6e3f4",
+    "faceRegistered": true,
+    "isHead": true
+  },
+  {
+    "id": "2",
+    "name": "Ramesh Kumar",
+    "relationship": "Husband",
+    "age": 45,
+    "aadhaar": "XXXX XXXX 3456",
+    "eligibility": "eligible",
+    "status": "verified",
+    "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Ramesh&backgroundColor=c0aede",
+    "faceRegistered": true,
+    "isHead": false
+  },
+  {
+    "id": "3",
+    "name": "Anitha Kumar",
+    "relationship": "Daughter",
+    "age": 19,
+    "aadhaar": "XXXX XXXX 7890",
+    "eligibility": "pending",
+    "status": "pending",
+    "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Anitha&backgroundColor=ffd5dc",
+    "faceRegistered": false,
+    "isHead": false
+  },
+  {
+    "id": "4",
+    "name": "Raju Kumar",
+    "relationship": "Son",
+    "age": 16,
+    "aadhaar": "XXXX XXXX 2345",
+    "eligibility": "pending",
+    "status": "pending",
+    "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Raju&backgroundColor=d1f2eb",
+    "faceRegistered": false,
+    "isHead": false
+  }
+]

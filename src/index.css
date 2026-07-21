@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #005BAC;
+  --color-primary-light: #0070D2;
+  --color-primary-dark: #004080;
+  --color-accent: #F58220;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-background: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-text-primary: #1A1A2E;
+  --color-text-secondary: #6B7280;
+  --color-border: #E5E7EB;
+
+  --font-family-sans: 'Inter', system-ui, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #E5E7EB;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#root {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  background-color: #F8FAFC;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(0,0,0,0.3);
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 20px 0;
+    align-items: center;
+    min-height: 100vh;
+  }
+  #root {
+    min-height: calc(100vh - 40px);
+    max-height: 900px;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+/* Signature pad canvas */
+canvas {
+  touch-action: none;
+}
+
+/* Custom animations */
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+@keyframes scanLine {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.gradient-primary {
+  background: linear-gradient(135deg, #005BAC 0%, #0070D2 100%);
+}
+
+.gradient-success {
+  background: linear-gradient(135deg, #16A34A 0%, #22C55E 100%);
+}
+
+.gradient-warm {
+  background: linear-gradient(135deg, #F58220 0%, #F59E0B 100%);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.card-shadow {
+  box-shadow: 0 4px 24px rgba(0, 91, 172, 0.08), 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.card-shadow-lg {
+  box-shadow: 0 8px 40px rgba(0, 91, 172, 0.12), 0 2px 8px rgba(0,0,0,0.06);
+}

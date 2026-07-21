@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "name": "Aadhaar Card",
+    "type": "aadhaar",
+    "status": "verified",
+    "uploadDate": "01 Jun 2026",
+    "fileSize": "1.2 MB",
+    "preview": "aadhaar-preview"
+  },
+  {
+    "id": "2",
+    "name": "Bank Passbook",
+    "type": "bank-passbook",
+    "status": "verified",
+    "uploadDate": "01 Jun 2026",
+    "fileSize": "0.8 MB",
+    "preview": "bank-preview"
+  },
+  {
+    "id": "3",
+    "name": "Ration Card",
+    "type": "ration-card",
+    "status": "verified",
+    "uploadDate": "02 Jun 2026",
+    "fileSize": "2.1 MB",
+    "preview": "ration-preview"
+  },
+  {
+    "id": "4",
+    "name": "Income Certificate",
+    "type": "income-certificate",
+    "status": "verified",
+    "uploadDate": "03 Jun 2026",
+    "fileSize": "0.5 MB",
+    "preview": "income-preview"
+  }
+]

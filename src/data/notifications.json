@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "title": "Monthly Verification Due",
+    "message": "Your monthly face verification is due by 28 July 2026. Please complete it to receive your payment.",
+    "type": "warning",
+    "read": false,
+    "timestamp": "2026-07-21T09:00:00Z",
+    "icon": "face"
+  },
+  {
+    "id": "2",
+    "title": "Payment Released",
+    "message": "₹2,000 has been successfully credited to your bank account for July 2026.",
+    "type": "success",
+    "read": false,
+    "timestamp": "2026-07-15T14:30:00Z",
+    "icon": "account_balance_wallet"
+  },
+  {
+    "id": "3",
+    "title": "Application Approved",
+    "message": "Your Gruhalakshmi application GL2026458732 has been approved. You are now a verified beneficiary.",
+    "type": "success",
+    "read": true,
+    "timestamp": "2026-06-01T10:00:00Z",
+    "icon": "check_circle"
+  },
+  {
+    "id": "4",
+    "title": "Document Verification Complete",
+    "message": "All your documents have been verified successfully.",
+    "type": "info",
+    "read": true,
+    "timestamp": "2026-05-28T11:00:00Z",
+    "icon": "description"
+  }
+]
