@@ -36,7 +36,7 @@ export default function ApplicationsScreen() {
         </div>
       </div>
 
-      <div className="px-4 -mt-6 pb-6">
+      <div className="relative z-20 px-4 -mt-6 pb-6">
         <div className="bg-white rounded-2xl p-2 card-shadow-lg mb-4 flex gap-1 overflow-x-auto">
           {tabs.map(tab => (
             <button

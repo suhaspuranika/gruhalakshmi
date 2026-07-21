@@ -54,7 +54,7 @@ export default function FamilyScreen() {
         </div>
       </div>
 
-      <div className="px-4 -mt-8 pb-4">
+      <div className="relative z-20 px-4 -mt-8 pb-4">
         {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

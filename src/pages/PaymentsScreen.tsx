@@ -43,7 +43,7 @@ export default function PaymentsScreen() {
         </div>
       </div>
 
-      <div className="px-4 -mt-6 pb-6 space-y-4">
+      <div className="relative z-20 px-4 -mt-6 pb-6 space-y-4">
         {groups.map(([beneficiaryId, group], gi) => (
           <motion.div
             key={beneficiaryId}

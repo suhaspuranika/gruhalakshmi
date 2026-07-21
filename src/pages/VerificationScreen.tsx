@@ -73,7 +73,7 @@ export default function VerificationScreen() {
         </div>
       </div>
 
-      <div className="flex-1 px-4 -mt-8">
+      <div className="relative z-20 flex-1 px-4 -mt-8">
         {/* Main card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

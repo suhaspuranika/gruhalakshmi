@@ -80,7 +80,7 @@ export default function LoginScreen() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="flex-1 mx-4 -mt-8 bg-white rounded-3xl p-6 card-shadow-lg z-10"
+        className="relative z-20 flex-1 mx-4 -mt-8 bg-white rounded-3xl p-6 card-shadow-lg"
       >
         <h3 className="text-lg font-bold text-gray-900 mb-6">Login with Mobile</h3>
 
