@@ -2,17 +2,21 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useApp } from '../context/AppContext';
-import { getGreeting } from '../lib/utils';
 import Button from '../components/ui/Button';
 import BottomSheet from '../components/ui/BottomSheet';
 import NotificationCard from '../components/ui/NotificationCard';
 import notificationsData from '../data/notifications.json';
 import type { Notification } from '../types';
+import govtlogo from '../assets/govtlogo.png';
+import logo from '../assets/logo.png';
+import govtApp1 from '../assets/1.png';
+import govtApp2 from '../assets/2.jpg';
+import govtApp3 from '../assets/3.jpg';
 
 const menuItems = [
+  { icon: 'assignment', label: 'Fresh Gruhalakshmi Application', path: '/application/fresh', color: 'bg-orange-50', iconColor: 'text-orange-500' },
   { icon: 'person_add', label: 'Add Beneficiary', path: '/beneficiaries/add', color: 'bg-pink-50', iconColor: 'text-pink-500' },
   { icon: 'group', label: 'Beneficiaries', path: '/beneficiaries', color: 'bg-blue-50', iconColor: 'text-blue-500' },
-  { icon: 'assignment', label: 'Fresh Gruhalakshmi Application', path: '/application/fresh', color: 'bg-orange-50', iconColor: 'text-orange-500' },
   { icon: 'badge', label: 'Existing Beneficiary KYC', path: '/kyc/existing', color: 'bg-purple-50', iconColor: 'text-purple-500' },
   { icon: 'account_balance_wallet', label: 'Payment Status', path: '/payments', color: 'bg-green-50', iconColor: 'text-green-500' },
   { icon: 'description', label: 'My Applications', path: '/applications', color: 'bg-teal-50', iconColor: 'text-teal-500' },
@@ -37,14 +41,15 @@ export default function DashboardScreen() {
           transition={{ duration: 8, repeat: Infinity }}
         />
         <div className="relative z-10">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <p className="text-blue-200 text-sm font-medium">{getGreeting()},</p>
-              <h1 className="text-2xl font-black text-white">{user.name}</h1>
+          {/* Top row: Govt of Karnataka label + notification bell */}
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <img src={govtlogo} alt="Govt of Karnataka" className="w-8 h-8 object-contain" />
+              <p className="text-white/90 text-xs font-semibold tracking-wide">Government of Karnataka</p>
             </div>
             <button
               onClick={() => setShowNotifications(true)}
-              className="relative w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center"
+              className="relative w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0"
             >
               <span className="material-icons-round text-white text-xl">notifications</span>
               {unreadCount > 0 && (
@@ -55,6 +60,27 @@ export default function DashboardScreen() {
             </button>
           </div>
 
+          {/* Centre: Gruhalakshmi logo */}
+          <div className="flex justify-center my-4">
+            <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center shadow-xl shadow-black/20 p-1.5">
+              <img src={logo} alt="Gruhalakshmi" className="w-full h-full object-contain" />
+            </div>
+          </div>
+
+          {/* 3 app icons row */}
+          <div className="flex items-center justify-center gap-3 mb-5">
+            {[govtApp1, govtApp2, govtApp3].map((src, i) => (
+              <motion.button
+                key={i}
+                whileTap={{ scale: 0.92 }}
+                className="w-14 h-14 rounded-2xl overflow-hidden bg-white/20 border border-white/30 shadow-md flex-shrink-0"
+              >
+                <img src={src} alt={`App ${i + 1}`} className="w-full h-full object-cover" />
+              </motion.button>
+            ))}
+          </div>
+
+          {/* Beneficiary count card */}
           <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-4">
             <p className="text-blue-100 text-xs mb-1">Total Beneficiaries</p>
             <p className="text-3xl font-black text-white">{beneficiaries.length}</p>

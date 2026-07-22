@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useApp } from '../context/AppContext';
 import Button from '../components/ui/Button';
 import { cn } from '../lib/utils';
+import govtlogo from '../assets/govtlogo.png';
 
 const languages = [
   {
@@ -38,8 +39,8 @@ export default function LanguageScreen() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center"
         >
-          <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <span className="text-3xl">🏠</span>
+          <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+            <img src={govtlogo} alt="Govt of Karnataka" className="w-full h-full object-contain p-1" />
           </div>
           <h1 className="text-2xl font-black text-white">Gruhalakshmi</h1>
           <p className="text-white/70 text-sm mt-1">Government of Karnataka</p>

@@ -5,6 +5,7 @@ import { useApp } from '../context/AppContext';
 import Button from '../components/ui/Button';
 import Input from '../components/ui/Input';
 import { sleep } from '../lib/utils';
+import govtlogo from '../assets/govtlogo.png';
 
 export default function LoginScreen() {
   const navigate = useNavigate();
@@ -62,8 +63,8 @@ export default function LoginScreen() {
           className="relative z-10"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-              <span className="text-2xl">🏠</span>
+            <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-md">
+              <img src={govtlogo} alt="Govt of Karnataka" className="w-full h-full object-contain p-1" />
             </div>
             <div>
               <h1 className="text-xl font-black text-white">Gruhalakshmi</h1>
