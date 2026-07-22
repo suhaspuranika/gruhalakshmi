@@ -34,7 +34,8 @@ export default function DashboardScreen() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
-      <div className="gradient-primary px-5 pt-12 pb-16 relative overflow-hidden">
+      {/* Compact blue header */}
+      <div className="gradient-primary px-5 pt-10 pb-8 relative overflow-hidden">
         <motion.div
           className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-white/5"
           animate={{ scale: [1, 1.1, 1] }}
@@ -44,7 +45,7 @@ export default function DashboardScreen() {
           {/* Top row: Govt of Karnataka label + notification bell */}
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
-              <img src={govtlogo} alt="Govt of Karnataka" className="w-8 h-8 object-contain" />
+              <img src={govtlogo} alt="Govt of Karnataka" className="w-7 h-7 object-contain" />
               <p className="text-white/90 text-xs font-semibold tracking-wide">Government of Karnataka</p>
             </div>
             <button
@@ -60,35 +61,39 @@ export default function DashboardScreen() {
             </button>
           </div>
 
-          {/* Centre: Gruhalakshmi logo */}
-          <div className="flex justify-center my-4">
-            <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center shadow-xl shadow-black/20 p-1.5">
-              <img src={logo} alt="Gruhalakshmi" className="w-full h-full object-contain" />
+          {/* Centre: Gruhalakshmi logo - smaller rectangular */}
+          <div className="flex justify-center my-2">
+            <div className="bg-white rounded-xl px-3 py-2 shadow-lg shadow-black/15">
+              <img src={logo} alt="Gruhalakshmi" className="h-14 w-auto object-contain" />
             </div>
           </div>
 
           {/* 3 app icons row */}
-          <div className="flex items-center justify-center gap-3 mb-5">
+          <div className="flex items-center justify-center gap-2.5 mt-3">
             {[govtApp1, govtApp2, govtApp3].map((src, i) => (
               <motion.button
                 key={i}
                 whileTap={{ scale: 0.92 }}
-                className="w-14 h-14 rounded-2xl overflow-hidden bg-white/20 border border-white/30 shadow-md flex-shrink-0"
+                className="w-12 h-12 rounded-xl overflow-hidden bg-white/20 border border-white/30 shadow-md flex-shrink-0"
               >
                 <img src={src} alt={`App ${i + 1}`} className="w-full h-full object-cover" />
               </motion.button>
             ))}
           </div>
-
-          {/* Beneficiary count card */}
-          <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-4">
-            <p className="text-blue-100 text-xs mb-1">Total Beneficiaries</p>
-            <p className="text-3xl font-black text-white">{beneficiaries.length}</p>
-          </div>
         </div>
       </div>
 
-      <div className="relative z-20 px-4 -mt-8 space-y-3 pb-4">
+      {/* White content area with Total Beneficiaries at top */}
+      <div className="relative z-20 px-4 -mt-6 space-y-3 pb-4">
+        {/* Total Beneficiaries Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white rounded-3xl p-5 card-shadow-lg"
+        >
+          <p className="text-gray-500 text-xs mb-1 font-medium">Total Beneficiaries</p>
+          <p className="text-4xl font-black text-[#005BAC]">{beneficiaries.length}</p>
+        </motion.div>
         {pendingKyc.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
