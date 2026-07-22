@@ -79,14 +79,19 @@ export default function DashboardScreen() {
 
       {/* White content area with Total Beneficiaries at top */}
       <div className="relative z-20 px-4 -mt-6 space-y-3 pb-4">
-        {/* Total Beneficiaries Card */}
+        {/* Total Beneficiaries — compact inline chip */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-3xl p-5 card-shadow-lg"
+          className="bg-white rounded-2xl px-4 py-3 card-shadow-lg flex items-center justify-between"
         >
-          <p className="text-gray-500 text-xs mb-1 font-medium">Total Beneficiaries</p>
-          <p className="text-4xl font-black text-[#005BAC]">{beneficiaries.length}</p>
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center">
+              <span className="material-icons-round text-[#005BAC] text-lg">group</span>
+            </div>
+            <span className="text-sm font-semibold text-gray-600">Total Beneficiaries</span>
+          </div>
+          <span className="text-2xl font-black text-[#005BAC]">{beneficiaries.length}</span>
         </motion.div>
         {pendingKyc.length > 0 && (
           <motion.div
