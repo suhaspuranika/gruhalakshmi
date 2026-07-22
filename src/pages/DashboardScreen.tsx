@@ -14,7 +14,6 @@ import govtApp2 from '../assets/2.jpg';
 
 const menuItems = [
   { icon: 'assignment', label: 'Fresh Gruhalakshmi Application', path: '/application/fresh', color: 'bg-orange-50', iconColor: 'text-orange-500' },
-  { icon: 'person_add', label: 'Add Beneficiary', path: '/beneficiaries/add', color: 'bg-pink-50', iconColor: 'text-pink-500' },
   { icon: 'group', label: 'Beneficiaries', path: '/beneficiaries', color: 'bg-blue-50', iconColor: 'text-blue-500' },
   { icon: 'badge', label: 'Existing Beneficiary KYC', path: '/kyc/existing', color: 'bg-purple-50', iconColor: 'text-purple-500' },
   { icon: 'account_balance_wallet', label: 'Payment Status', path: '/payments', color: 'bg-green-50', iconColor: 'text-green-500' },
@@ -44,8 +43,11 @@ export default function DashboardScreen() {
           {/* Top row: Govt of Karnataka label + notification bell */}
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
-              <img src={govtlogo} alt="Govt of Karnataka" className="w-7 h-7 object-contain" />
-              <p className="text-white/90 text-xs font-semibold tracking-wide">Government of Karnataka</p>
+              <img src={govtlogo} alt="Govt of Karnataka" className="w-9 h-9 object-contain" />
+              <div>
+                <p className="text-white font-bold text-sm leading-tight">Government of Karnataka</p>
+                <p className="text-blue-200 text-xs leading-tight">Dept. of Women & Child Development</p>
+              </div>
             </div>
             <button
               onClick={() => setShowNotifications(true)}
