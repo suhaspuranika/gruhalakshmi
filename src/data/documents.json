@@ -34,5 +34,14 @@
     "uploadDate": "03 Jun 2026",
     "fileSize": "0.5 MB",
     "preview": "income-preview"
+  },
+  {
+    "id": "5",
+    "name": "Voter ID",
+    "type": "voter-id",
+    "status": "verified",
+    "uploadDate": "03 Jun 2026",
+    "fileSize": "0.9 MB",
+    "preview": "voter-preview"
   }
 ]

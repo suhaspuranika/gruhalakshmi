@@ -22,6 +22,7 @@ interface DocItem {
 
 const documents: DocItem[] = [
   { id: 'aadhaar', name: 'Aadhaar Card', description: 'Front & back of Aadhaar', icon: 'credit_card', color: 'text-blue-600', bgColor: 'bg-blue-50', required: true },
+  { id: 'voter', name: 'Voter ID', description: 'Front & back of Voter ID card', icon: 'how_to_vote', color: 'text-indigo-600', bgColor: 'bg-indigo-50', required: true },
   { id: 'bank', name: 'Bank Passbook', description: 'First page with account details', icon: 'account_balance', color: 'text-green-600', bgColor: 'bg-green-50', required: true },
   { id: 'ration', name: 'Ration Card', description: 'Family ration card copy', icon: 'receipt', color: 'text-orange-600', bgColor: 'bg-orange-50', required: true },
   { id: 'income', name: 'Income Certificate', description: 'Issued by competent authority', icon: 'description', color: 'text-purple-600', bgColor: 'bg-purple-50', required: false },

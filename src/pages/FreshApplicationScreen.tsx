@@ -35,6 +35,7 @@ const defaultData: RegistrationData = {
   district: '',
   taluk: '',
   pincode: '',
+  voterEpic: '',
   bankAccount: '',
   ifsc: '',
   bankName: '',

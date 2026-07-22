@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Input from '../../../components/ui/Input';
 import Button from '../../../components/ui/Button';
@@ -11,6 +12,8 @@ interface StepProps {
 }
 
 export default function Step4Personal({ data, updateData, onNext }: StepProps) {
+  const [epicError, setEpicError] = useState('');
+
   const fields = [
     { key: 'address', label: 'Full Address', icon: 'home', placeholder: 'House/Plot No, Street, Area' },
     { key: 'village', label: 'Village / Town', icon: 'location_city', placeholder: 'Village or Town name' },
@@ -21,17 +24,31 @@ export default function Step4Personal({ data, updateData, onNext }: StepProps) {
     { key: 'mobile', label: 'Mobile Number', icon: 'phone', placeholder: '10-digit mobile', type: 'tel', maxLen: 10 },
   ];
 
+  const handleContinue = () => {
+    const epic = data.voterEpic.trim().toUpperCase();
+    if (!epic) {
+      setEpicError('Voter EPIC number is required');
+      return;
+    }
+    if (!/^[A-Z]{3}[0-9]{7}$/.test(epic)) {
+      setEpicError('Enter a valid EPIC (e.g. ABC1234567)');
+      return;
+    }
+    setEpicError('');
+    updateData({ voterEpic: epic });
+    onNext();
+  };
+
   return (
     <div className="p-5 space-y-4">
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
         <div className="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center mb-4">
           <span className="material-icons-round text-green-600 text-3xl">person</span>
         </div>
-        <h2 className="text-xl font-bold text-gray-900">Personal Details</h2>
-        <p className="text-sm text-gray-500 mt-1">Review and edit your personal information</p>
+        <h2 className="text-xl font-bold text-gray-900">Eligibility Details</h2>
+        <p className="text-sm text-gray-500 mt-1">Review personal details and enter EPIC number</p>
       </motion.div>
 
-      {/* Pre-filled from Aadhaar */}
       {data.name && (
         <div className="bg-green-50 border border-green-200 rounded-2xl p-3 flex items-center gap-2">
           <span className="material-icons-round text-green-500 text-sm">auto_fix_high</span>
@@ -39,7 +56,6 @@ export default function Step4Personal({ data, updateData, onNext }: StepProps) {
         </div>
       )}
 
-      {/* Read-only Aadhaar info */}
       <div className="bg-blue-50 rounded-2xl p-4 space-y-2">
         <p className="text-xs font-bold text-[#005BAC] uppercase tracking-wider mb-2">From Aadhaar</p>
         {[
@@ -57,7 +73,21 @@ export default function Step4Personal({ data, updateData, onNext }: StepProps) {
         ))}
       </div>
 
-      {/* Editable fields */}
+      <Input
+        label="Voter EPIC Number"
+        value={data.voterEpic}
+        onChange={e => {
+          const val = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 10);
+          updateData({ voterEpic: val });
+          setEpicError('');
+        }}
+        placeholder="e.g. ABC1234567"
+        error={epicError}
+        hint="10-character EPIC ID from Voter ID card"
+        maxLength={10}
+        leftIcon={<span className="material-icons-round text-lg">how_to_vote</span>}
+      />
+
       <div className="space-y-3">
         {fields.map((field, i) => (
           <motion.div
@@ -84,7 +114,7 @@ export default function Step4Personal({ data, updateData, onNext }: StepProps) {
         ))}
       </div>
 
-      <Button fullWidth size="xl" onClick={onNext}
+      <Button fullWidth size="xl" onClick={handleContinue}
         icon={<span className="material-icons-round text-xl">arrow_forward</span>} iconPosition="right">
         Save & Continue
       </Button>

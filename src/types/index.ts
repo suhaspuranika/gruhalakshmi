@@ -105,7 +105,7 @@ export interface Notification {
 export interface Document {
   id: string;
   name: string;
-  type: 'aadhaar' | 'bank-passbook' | 'ration-card' | 'income-certificate';
+  type: 'aadhaar' | 'bank-passbook' | 'ration-card' | 'income-certificate' | 'voter-id';
   status: 'uploaded' | 'pending' | 'verified';
   uploadDate: string;
   fileSize: string;
@@ -144,6 +144,7 @@ export interface RegistrationData {
   district: string;
   taluk: string;
   pincode: string;
+  voterEpic: string;
   bankAccount: string;
   ifsc: string;
   bankName: string;
