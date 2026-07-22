@@ -9,9 +9,8 @@ import notificationsData from '../data/notifications.json';
 import type { Notification } from '../types';
 import govtlogo from '../assets/govtlogo.png';
 import logo from '../assets/logo.png';
-import govtApp1 from '../assets/1.png';
+import govtApp1 from '../assets/1.jpg';
 import govtApp2 from '../assets/2.jpg';
-import govtApp3 from '../assets/3.jpg';
 
 const menuItems = [
   { icon: 'assignment', label: 'Fresh Gruhalakshmi Application', path: '/application/fresh', color: 'bg-orange-50', iconColor: 'text-orange-500' },
@@ -61,24 +60,19 @@ export default function DashboardScreen() {
             </button>
           </div>
 
-          {/* Centre: Gruhalakshmi logo - smaller rectangular */}
-          <div className="flex justify-center my-2">
-            <div className="bg-white rounded-xl px-3 py-2 shadow-lg shadow-black/15">
-              <img src={logo} alt="Gruhalakshmi" className="h-14 w-auto object-contain" />
-            </div>
-          </div>
+          {/* Logo row: 1.png | logo.png | 2.jpg — all in one compact line */}
+          <div className="flex items-center justify-center gap-3 mt-3">
+            <motion.button whileTap={{ scale: 0.92 }} className="w-12 h-12 rounded-xl overflow-hidden bg-white/20 border border-white/30 shadow-md flex-shrink-0">
+              <img src={govtApp1} alt="App 1" className="w-full h-full object-cover" />
+            </motion.button>
 
-          {/* 3 app icons row */}
-          <div className="flex items-center justify-center gap-2.5 mt-3">
-            {[govtApp1, govtApp2, govtApp3].map((src, i) => (
-              <motion.button
-                key={i}
-                whileTap={{ scale: 0.92 }}
-                className="w-12 h-12 rounded-xl overflow-hidden bg-white/20 border border-white/30 shadow-md flex-shrink-0"
-              >
-                <img src={src} alt={`App ${i + 1}`} className="w-full h-full object-cover" />
-              </motion.button>
-            ))}
+            <div className="bg-white rounded-xl px-3 py-2 shadow-lg shadow-black/15 flex-shrink-0">
+              <img src={logo} alt="Gruhalakshmi" className="h-12 w-auto object-contain" />
+            </div>
+
+            <motion.button whileTap={{ scale: 0.92 }} className="w-12 h-12 rounded-xl overflow-hidden bg-white/20 border border-white/30 shadow-md flex-shrink-0">
+              <img src={govtApp2} alt="App 2" className="w-full h-full object-cover" />
+            </motion.button>
           </div>
         </div>
       </div>
